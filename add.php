@@ -4,13 +4,13 @@ include 'db.php';
 
 if (isset($_POST['send'])) {
 
-    $name = htmlspecialchars($_POST['task']);
+    $taskName = htmlspecialchars($_POST['task']);
 
-    $sql = "insert into tasks (name) values ('$name')";
+    $addTaskQuery = "insert into tasks (name) values ('$taskName')";
 
-    $val = $db->query($sql);
+    $taskIsAdded = $db->query($addTaskQuery);
 
-    if ($val) {
+    if ($taskIsAdded) {
         header('location: index.php');
     }
 

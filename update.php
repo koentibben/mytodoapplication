@@ -2,22 +2,20 @@
 
 <?php include 'db.php';
 
-$id = (int)$_GET['id'];
+$taskId = (int)$_GET['id'];
 
-$sql = "select * from tasks where id='$id'";
+$selectFromWhereQuery = "select * from tasks where id='$taskId'";
 
-$rows = $db->query($sql);
+$rows = $db->query($selectFromWhereQuery);
 
 $row = $rows->fetch_assoc();
 
 if (isset($_POST['send'])) {
     $task = htmlspecialchars($_POST['task']);
-    $sql2 = "update tasks set name='$task' where id ='$id'";
-
-    $db->query($sql2);
+    $updateQuery = "update tasks set name='$task' where id ='$taskId'";
+    $db->query($updateQuery);
 
     header('location: index.php');
-
 }
 
 ?>

@@ -4,10 +4,10 @@ include 'db.php';
 
 $id = (int)$_GET['id'];
 
-$sql = "delete from tasks where id = '$id'";
+$deleteQuery = "delete from tasks where id = '$id'";
 
-$val = $db->query($sql);
+$taskIsDeleted = $db->query($deleteQuery);
 
-if ($val) {
+if ($taskIsDeleted) {
     header('location: index.php');
 }

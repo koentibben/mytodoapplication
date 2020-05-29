@@ -6,11 +6,11 @@ $page = (isset($_GET['page']) ? (int)$_GET['page'] : 1);
 $perPage = (isset($_GET['per-page']) && (int)($_GET['per-page']) <= 50 ? (int)$_GET['per-page'] : 5);
 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
-$sql = "select * from tasks limit " . $start . ", " . $perPage . " ";
+$selectFromWhereQuery = "select * from tasks limit " . $start . ", " . $perPage . " ";
 $total = $db->query("select * from tasks")->num_rows;
 $pages = ceil($total / $perPage);
 
-$rows = $db->query($sql);
+$rows = $db->query($selectFromWhereQuery);
 
 ?>
 <html lang="en">
